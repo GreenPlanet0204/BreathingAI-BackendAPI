@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "@loopback/build/config/tsconfig.common.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "outDir": "dist",
+    "rootDir": "src",
+  "paths": {
+    "@authentication/*": ["./src/components/authentication/*"],
+    "@applications/*": ["./src/applications/*"],
+    "@models/*": ["./src/models/*"],
+    "@datasources/*": ["./src/datasources/*"],
+    "@controllers/*": ["./src/controllers/*"],
+    "@services/core": ["./src/services/index.ts"],  
+    "@repositories/*": ["./src/repositories/*"]
+  }
+  },
+  "include": ["src"]
+  
+}

@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  # api:
+  #   build:
+  #     context: ./
+  #     dockerfile: docker/dev/Dockerfile
+  #   environment:
+  #     - NODE_ENV=${NODE_ENV:-production}
+  #     - HOST=${HOST:-0.0.0.0}
+  #     - PORT=${PORT:-3000}
+  #     - REST_PORT=${REST_PORT:-3001}
+  #     - DB_HOST=${DB_HOST:-localhost}
+  #     - DB_URL=${DB_URL:-postgres://postgres:postgres@localhost:5432/main}
+  #     - DB_USER=${DB_USER:-root}
+  #     - DB_PASSWORD=${DB_PASSWORD:-root}
+  #     - DB_PORT=${DB_PORT:-5432}
+  #     - FB_CLIENT_ID=${FB_CLIENT_ID:-0}
+  #     - FB_CLIENT_SECRET=${FB_CLIENT_SECRET:-0}
+  #     - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-0}
+  #     - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-0}
+  #     - TWITTER_CONSUMER_KEY=${TWITTER_CONSUMER_KEY:-0}
+  #     - TWITTER_CONSUMER_SECRET=${TWITTER_CONSUMER_SECRET:-0}
+  #     - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID:-0}
+  #     - OAUTH_SECRET=${OAUTH_SECRET:-0}
+  #   ports:
+  #     - 3000:3000
+  #     - 3001:3001
+  #     - 3002:3002
+  db:
+    image: postgres:14.5-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-root}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-root}
+      - POSTGRES_DB=${POSTGRES_USER:-main}
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local

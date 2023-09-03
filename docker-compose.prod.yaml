@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: docker/prod/Dockerfile
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - HOST=${HOST:-0.0.0.0}
+      - PORT=${PORT:-3000}
+      - REST_PORT=${REST_PORT:-3001}
+      - DB_HOST=${DB_HOST:-localhost}
+      - DB_URL=${DB_URL:-postgres://postgres:postgres@localhost:5432/main}
+      - DB_USER=${DB_USER:-root}
+      - DB_PASSWORD=${DB_PASSWORD:-root}
+      - DB_PORT=${DB_PORT:-5432}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-0}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-0}
+    ports:
+      - 3000:3000
+      - 3001:3001
